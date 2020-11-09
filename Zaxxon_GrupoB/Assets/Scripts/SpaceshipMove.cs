@@ -15,8 +15,8 @@ public class SpaceshipMove : MonoBehaviour
     //De momento fija, ya veremos si aumenta con la velocidad o con powerUps
     private float moveSpeed = 3f;
     //Variable que determina si estoy en los márgenes
-    public bool inMarginMoveX = true;
-    public bool inMarginMoveY = true;
+    private bool inMarginMoveX = true;
+    private bool inMarginMoveY = true;
 
     //Capturo el texto del UI que indicará la distancia recorrida
     [SerializeField] Text TextDistance;
@@ -84,12 +84,30 @@ public class SpaceshipMove : MonoBehaviour
         print(transform.position.x);
         float myPosX = transform.position.x;
         float myPosY = transform.position.y;
-        
-        if(myPosX < -4.5 && desplX < 0)
+
+        //Lanzamos el método que nos comprueba la restricción en X y en Y
+        checkRestrX(myPosX, desplX);
+        checkRestrY(myPosY, desplY);
+
+        //Si estoy en los márgenes, me muevo
+        if (inMarginMoveX)
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * desplX);
+        }
+        if(inMarginMoveY)
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * moveSpeed * desplY);
+        }
+
+    }
+
+    void checkRestrX(float myPosX, float desplX)
+    {
+        if (myPosX < -4.5 && desplX < 0)
         {
             inMarginMoveX = false;
         }
-        else if(myPosX < -4.5 && desplX > 0)
+        else if (myPosX < -4.5 && desplX > 0)
         {
             inMarginMoveX = true;
         }
@@ -101,6 +119,10 @@ public class SpaceshipMove : MonoBehaviour
         {
             inMarginMoveX = true;
         }
+    }
+
+    void checkRestrY(float myPosY, float desplY)
+    {
         //Retricción en Y
         if (myPosY < -0 && desplY < 0)
         {
@@ -118,18 +140,5 @@ public class SpaceshipMove : MonoBehaviour
         {
             inMarginMoveY = true;
         }
-
-        //Si estoy en los márgenes, me muevo
-        if (inMarginMoveX)
-        {
-            transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * desplX);
-
-        }
-        if(inMarginMoveY)
-        {
-            transform.Translate(Vector3.up * Time.deltaTime * moveSpeed * desplY);
-        }
-
-
     }
 }
