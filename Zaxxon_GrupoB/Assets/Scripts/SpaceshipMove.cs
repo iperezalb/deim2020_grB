@@ -14,6 +14,9 @@ public class SpaceshipMove : MonoBehaviour
     //Variable que determina cómo de rápido se mueve la nave con el joystick
     //De momento fija, ya veremos si aumenta con la velocidad o con powerUps
     private float moveSpeed = 3f;
+    //Variable que determina si estoy en los márgenes
+    public bool inMarginMoveX = true;
+    public bool inMarginMoveY = true;
 
     //Capturo el texto del UI que indicará la distancia recorrida
     [SerializeField] Text TextDistance;
@@ -54,6 +57,11 @@ public class SpaceshipMove : MonoBehaviour
 
     void MoverNave()
     {
+        
+        
+        
+        
+        
         /*
         //Ejemplos de Input que podemos usar más adelante
         if(Input.GetKey(KeyCode.Space))
@@ -72,9 +80,56 @@ public class SpaceshipMove : MonoBehaviour
 
         //Movemos la nave mediante el método transform.translate
         //Lo multiplicamos por deltaTime, el eje y la velocidad de movimiento la nave
-        transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * desplX);
-        transform.Translate(Vector3.up * Time.deltaTime * moveSpeed * desplY);
 
+        print(transform.position.x);
+        float myPosX = transform.position.x;
+        float myPosY = transform.position.y;
         
+        if(myPosX < -4.5 && desplX < 0)
+        {
+            inMarginMoveX = false;
+        }
+        else if(myPosX < -4.5 && desplX > 0)
+        {
+            inMarginMoveX = true;
+        }
+        else if (myPosX > 4.5 && desplX > 0)
+        {
+            inMarginMoveX = false;
+        }
+        else if (myPosX > 4.5 && desplX < 0)
+        {
+            inMarginMoveX = true;
+        }
+        //Retricción en Y
+        if (myPosY < -0 && desplY < 0)
+        {
+            inMarginMoveY = false;
+        }
+        else if (myPosY < -0 && desplY > 0)
+        {
+            inMarginMoveY = true;
+        }
+        else if (myPosY > 4 && desplY > 0)
+        {
+            inMarginMoveY = false;
+        }
+        else if (myPosY > 4 && desplY < 0)
+        {
+            inMarginMoveY = true;
+        }
+
+        //Si estoy en los márgenes, me muevo
+        if (inMarginMoveX)
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * desplX);
+
+        }
+        if(inMarginMoveY)
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * moveSpeed * desplY);
+        }
+
+
     }
 }
