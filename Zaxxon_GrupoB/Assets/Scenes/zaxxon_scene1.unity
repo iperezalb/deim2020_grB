@@ -96,7 +96,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
@@ -170,8 +169,11 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+<<<<<<< HEAD
+=======
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+>>>>>>> 2f17e020f30995d65e275104e21edc7a5ccb879b
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -213,7 +215,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109773236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+=======
   m_LocalPosition: {x: 0.15, y: 0, z: 0}
+>>>>>>> 2f17e020f30995d65e275104e21edc7a5ccb879b
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -258,9 +264,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 154862621}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 9
   m_Type: 1
-  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -355,7 +360,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
@@ -373,8 +378,11 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+<<<<<<< HEAD
+=======
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+>>>>>>> 2f17e020f30995d65e275104e21edc7a5ccb879b
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -501,8 +509,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
+<<<<<<< HEAD
+  m_AnchoredPosition: {x: 176.8, y: -53.4}
+  m_SizeDelta: {x: 295.29, y: 30}
+=======
   m_AnchoredPosition: {x: 431.2, y: -53.4}
   m_SizeDelta: {x: 763.9, y: 50.21}
+>>>>>>> 2f17e020f30995d65e275104e21edc7a5ccb879b
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &585907812
 MonoBehaviour:
@@ -519,18 +532,29 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+<<<<<<< HEAD
+=======
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
+>>>>>>> 2f17e020f30995d65e275104e21edc7a5ccb879b
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< HEAD
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+=======
     m_FontSize: 37
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 64
+>>>>>>> 2f17e020f30995d65e275104e21edc7a5ccb879b
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -767,7 +791,10 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+<<<<<<< HEAD
+=======
   m_PresetInfoIsWorld: 0
+>>>>>>> 2f17e020f30995d65e275104e21edc7a5ccb879b
 --- !u!223 &2044101051
 Canvas:
   m_ObjectHideFlags: 0
