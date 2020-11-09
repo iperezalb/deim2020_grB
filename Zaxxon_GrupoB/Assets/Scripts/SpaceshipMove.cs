@@ -42,13 +42,13 @@ public class SpaceshipMove : MonoBehaviour
     {
         //Bucle infinito que suma 10 en cada ciclo
         //El segundo parámetro está vacío, por eso es infinito
-        for(int n = 0; ; n += 10)
+        for(int n = 0; ; n += 2)
         {
             //Cambio el texto que aparece en pantalla
             TextDistance.text = "DISTANCIA: " + n;
 
             //Ejecuto cada ciclo esperando 1 segundo
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.1f);
         }
         
     }
@@ -57,9 +57,6 @@ public class SpaceshipMove : MonoBehaviour
 
     void MoverNave()
     {
-        
-        
-        
         
         
         /*
