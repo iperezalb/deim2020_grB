@@ -15,6 +15,7 @@ public class ObstacleMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Con estas dos lineas de codigo, cada prefab encuentra la nave y guarda su informacion en una variable 
         SpaceShip = GameObject.Find("Spaceship");
         spaceshipMove = SpaceShip.GetComponent<SpaceshipMove>();
     }
@@ -31,9 +32,8 @@ public class ObstacleMove : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //Asignamos una velocidad fija (de momento)
-        obstacleSpeed = 2.5f;
-        transform.Translate(Vector3.back * Time.deltaTime * obstacleSpeed);
+        //Asignamos la misma velocidad que la de la nave a los prefabs
+        transform.Translate(Vector3.back * Time.deltaTime * spaceshipMove.speed);
  
     }
 }

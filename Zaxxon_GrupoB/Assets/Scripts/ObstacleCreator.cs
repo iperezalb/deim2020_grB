@@ -14,11 +14,15 @@ public class ObstacleCreator : MonoBehaviour
 
     //Variables para generar columnas de forma random
     private float randomNumber;
-    private float randomNumberZ;
     Vector3 RandomPos;
-   
-    
-    
+    [SerializeField] float distanciaInicial = 5;
+
+    public GameObject SpaceShip;
+    SpaceshipMove spaceshipMove;
+
+    //Variable PRIVADA que indica la velocidad a la que se generan las columnas en la corrutina
+    private float velocidadColumnas = 1f; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,14 +36,15 @@ public class ObstacleCreator : MonoBehaviour
         //Lanzo la corrutina
         StartCoroutine("InstanciadorColumnas");
 
+        SpaceShip = GameObject.Find("Spaceship");
+        spaceshipMove = SpaceShip.GetComponent<SpaceshipMove>();
     }
 
     //Función que crea una columna en una posición Random
-    void CrearColumna()
+    void CrearColumna(float posZ = 0f)
     {
-        randomNumber = Random.Range(-6f, 8f);
-        randomNumberZ = Random.Range(0f, 80f);
-        RandomPos = new Vector3(randomNumber, 0, randomNumberZ);
+        randomNumber = Random.Range(0f, 7f);
+        RandomPos = new Vector3(randomNumber, 0, posZ);
         //print(RandomPos);
         Vector3 FinalPos = InitPos.position + RandomPos;
         Instantiate(Columna, FinalPos, Quaternion.identity);
@@ -52,11 +57,28 @@ public class ObstacleCreator : MonoBehaviour
         //Bucle infinito (poner esto es lo mismo que while(true){}
         for (; ; )
         {
+            //He leido en internet que esta linea tiene que ir arriba de la corrutina. Si no se rompia el programa
+            yield return new WaitForSeconds(velocidadColumnas);
+
             CrearColumna();
-            yield return new WaitForSeconds(1f);
+
+            //Dependiendo de la velocidad a la que vaya la nave, la corrutina hara que se genere el mismo nurmero de columnas en menos tiempo 
+            if (spaceshipMove.speed == 3f)
+            {
+                velocidadColumnas = 1f;
+            }
+            else if (spaceshipMove.speed == 5f)
+            {
+                velocidadColumnas = 0.8f;
+            }
+            else if (spaceshipMove.speed == 7f)
+            {
+                velocidadColumnas = 0.6f;
+            }
+            else
+            {
+                velocidadColumnas = 1f;
+            }            
         }
-
     }
-
-
 }

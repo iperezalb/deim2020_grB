@@ -11,9 +11,12 @@ public class SpaceshipMove : MonoBehaviour
     //La nave NO se mueve, son los obtstáculos los que se desplazan
     public float speed = 3f;
 
-    //Variable que determina cómo de rápido se mueve la nave con el joystick
-    //De momento fija, ya veremos si aumenta con la velocidad o con powerUps
+    //Variable PRIVADA que indica la velocidad a la que se desplaza la nave en horizontal y vertical 
+    //por el control del jugador.
     private float moveSpeed = 3f;
+    
+    //Variables PRIVADA que guarda la distancia recorrida por la nave
+    private float distance;
 
     //Capturo el texto del UI que indicará la distancia recorrida
     [SerializeField] Text TextDistance;
@@ -40,14 +43,27 @@ public class SpaceshipMove : MonoBehaviour
         //Bucle infinito que suma 10 en cada ciclo
         //El segundo parámetro está vacío, por eso es infinito
 
-        for(int n = 0; ; n += 2)
-
+        for(int n = 0; ; n++)
         {
-            //Cambio el texto que aparece en pantalla
-            TextDistance.text = "DISTANCIA: " + n;
+            //Actualizacion de la distancia recorrida por la nave
+            distance = n * speed;
 
+            //Cambio el texto que aparece en pantalla
+            TextDistance.text = "DISTANCIA: " + distance;
+
+            //Si la nave ha recorrido 1000 unidades de distancia la velocidad aumenta a 4f
+            if (distance >= 1000f && distance <= 5000f)
+            {
+                speed = 5f;
+            }
+            //Si la nave ha recorrido 5000 unidades de distancia la velocidad aumenta a 5f
+            else if (distance > 5000f)
+            {
+                speed = 7f;
+            }
+            
             //Ejecuto cada ciclo esperando 1 segundo
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.1f);
         }
         
     }
