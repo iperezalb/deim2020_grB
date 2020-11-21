@@ -20,7 +20,11 @@ public class SpaceshipMove : MonoBehaviour
 
     //Capturo el texto del UI que indicará la distancia recorrida
     [SerializeField] Text TextDistance;
-    
+
+    //La variable myMesh de la clase MeshRenderer se crea para enlazar el renderizado de la nave y poder desactivarlo al chocar con un prefab
+    [SerializeField] MeshRenderer myMesh;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,8 +49,12 @@ public class SpaceshipMove : MonoBehaviour
 
         for(int n = 0; ; n++)
         {
-            //Actualizacion de la distancia recorrida por la nave
-            distance = n * speed;
+            //Actualizacion de la distancia recorrida por la nave, salvo cuando la velocidad es = 0, ya que significa que has perdido
+            //Y la distancia se queda en el ultimo valor antes de chocar
+            if(speed != 0)
+            {
+                distance = n * speed;
+            }
 
             //Cambio el texto que aparece en pantalla
             TextDistance.text = "DISTANCIA: " + distance;
@@ -99,4 +107,11 @@ public class SpaceshipMove : MonoBehaviour
         transform.Translate(Vector3.up * Time.deltaTime * moveSpeed * desplY);
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        speed = 0f;
+        
+        myMesh.enabled = false;
+        
+    }
 }
