@@ -27,11 +27,11 @@ public class ObstacleCreator : MonoBehaviour
     void Start()
     {
         //Creo las columnas iniciales
-        /*for(int n = 1; n <= 30; n++)
+        for(int n = 1; n <= 30; n++)
         {
             
             CrearColumna(-n * distanciaInicial);
-        }*/
+        }
         
         //Lanzo la corrutina
         StartCoroutine("InstanciadorColumnas");
@@ -43,7 +43,7 @@ public class ObstacleCreator : MonoBehaviour
     //Función que crea una columna en una posición Random
     void CrearColumna(float posZ = 0f)
     {
-        randomNumber = Random.Range(0f, 7f);
+        randomNumber = Random.Range(-5f, 5f);
         RandomPos = new Vector3(randomNumber, 0, posZ);
         //print(RandomPos);
         Vector3 FinalPos = InitPos.position + RandomPos;

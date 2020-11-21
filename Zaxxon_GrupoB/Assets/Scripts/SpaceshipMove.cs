@@ -74,11 +74,11 @@ public class SpaceshipMove : MonoBehaviour
     {
         //Variable float que obtiene el valor del eje horizontal y vertical
         float desplX = Input.GetAxis("Horizontal");
-        if (transform.position.x < -5f && desplX < 0)
+        if (transform.position.x < -5.5f && desplX < 0)
         {
             desplX = 0f;
         }
-        else if (transform.position.x > 5f && desplX > 0)
+        else if (transform.position.x > 5.5f && desplX > 0)
         {
             desplX = 0f;
         }
