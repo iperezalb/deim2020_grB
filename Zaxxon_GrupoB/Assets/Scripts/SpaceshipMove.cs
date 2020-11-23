@@ -62,19 +62,19 @@ public class SpaceshipMove : MonoBehaviour
             //Cambio el texto que aparece en pantalla
             TextDistance.text = "DISTANCIA: " + distance;
 
-            //Si la nave ha recorrido 1000 unidades de distancia la velocidad aumenta a 4f
-            if (distance >= 1000f && distance <= 5000f)
+            //Si la nave ha recorrido 300 unidades de distancia la velocidad aumenta a 5f
+            if (distance >= 300f && distance <= 800f)
             {
                 speed = 5f;
             }
-            //Si la nave ha recorrido 5000 unidades de distancia la velocidad aumenta a 5f
-            else if (distance > 5000f)
+            //Si la nave ha recorrido 800 unidades de distancia la velocidad aumenta a 7f
+            else if (distance > 800f)
             {
                 speed = 7f;
             }
             
             //Ejecuto cada ciclo esperando 1 segundo
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.25f);
         }
         
     }

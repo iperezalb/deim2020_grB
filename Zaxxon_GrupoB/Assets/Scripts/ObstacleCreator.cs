@@ -20,8 +20,7 @@ public class ObstacleCreator : MonoBehaviour
     public GameObject SpaceShip;
     SpaceshipMove spaceshipMove;
 
-    //Variable PRIVADA que indica la velocidad a la que se generan las columnas en la corrutina
-    private float velocidadColumnas = 1f; 
+    private float velocidadColumnas;
 
     // Start is called before the first frame update
     void Start()
@@ -52,21 +51,36 @@ public class ObstacleCreator : MonoBehaviour
 
     //Corrutina que se ejecuta cada segundo
     //NOTA: habría que cambiar ese segundo por una variable que dependa de la velocidad
-    IEnumerator InstanciadorColumnas()
-    {
-        
-            //He leido en internet que esta linea tiene que ir arriba de la corrutina. Si no se rompia el programa
-            yield return new WaitForSeconds(velocidadColumnas);
-
-            CrearColumna();
-
-        //Bucle infinito (poner esto es lo mismo que while(true){}
-        for (; ; )
-        {
-            CrearColumna();
-            float velocidadColumnas = 4 / spaceshipMove.speed;
-            yield return new WaitForSeconds(velocidadColumnas);
-        }
    
+        IEnumerator InstanciadorColumnas()
+        {
+            //Bucle infinito (poner esto es lo mismo que while(true){}
+            for (; ; )
+            {
+
+                //He leido en internet que esta linea tiene que ir arriba de la corrutina. Si no se rompia el programa
+                yield return new WaitForSeconds(velocidadColumnas);
+
+                CrearColumna();
+
+                //Dependiendo de la velocidad a la que vaya la nave, la corrutina hara que se genere el mismo nurmero de columnas en menos tiempo 
+                if (spaceshipMove.speed == 3f)
+                {
+                    velocidadColumnas = 1f;
+                }
+                else if (spaceshipMove.speed == 5f)
+                {
+                    velocidadColumnas = 0.8f;
+                }
+                else if (spaceshipMove.speed == 7f)
+                {
+                    velocidadColumnas = 0.6f;
+                }
+                else
+                {
+                    velocidadColumnas = 1f;
+                }
+            }
+
     }
 }
