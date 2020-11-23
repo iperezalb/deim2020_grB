@@ -20,6 +20,7 @@ public class SpaceshipMove : MonoBehaviour
 
     //Capturo el texto del UI que indicará la distancia recorrida
     [SerializeField] Text TextDistance;
+    [SerializeField] Text TextVelocidad;
 
     //La variable myMesh de la clase MeshRenderer se crea para enlazar el renderizado de la nave y poder desactivarlo al chocar con un prefab
     [SerializeField] MeshRenderer myMesh;
@@ -30,7 +31,9 @@ public class SpaceshipMove : MonoBehaviour
     {
         //Llamo a la corrutina que hace aumentar la velocidad
         StartCoroutine("Distancia");
-        
+       
+
+
     }
 
     // Update is called once per frame
@@ -76,7 +79,7 @@ public class SpaceshipMove : MonoBehaviour
         
     }
 
-
+  
 
     void MoverNave()
     {

@@ -33,7 +33,9 @@ public class ObstacleMove : MonoBehaviour
         }
 
         //Asignamos la misma velocidad que la de la nave a los prefabs
+        
         transform.Translate(Vector3.back * Time.deltaTime * spaceshipMove.speed);
- 
+      
+
     }
 }
