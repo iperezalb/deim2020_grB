@@ -7,6 +7,9 @@ public class SpaceshipMove : MonoBehaviour
 {
     //--SCRIPT PARA MOVER LA NAVE --//
 
+    //Variable PUBLICA que indica cuando se ha terminado el juego
+    public bool gameOver = false;
+
     //Variable PÚBLICA que indica la velocidad a la que se desplaza
     //La nave NO se mueve, son los obtstáculos los que se desplazan
     public float speed = 3f;
@@ -18,10 +21,10 @@ public class SpaceshipMove : MonoBehaviour
     //Variables PRIVADA que guarda la distancia recorrida por la nave
     private float distance;
 
-    //Capturo el texto del UI que indicará la distancia recorrida
+    //Varriables enlazadas con Unity con los textos que indican la distancia y la velocidad
     [SerializeField] Text TextDistance;
-    [SerializeField] Text TextVelocidad;
-
+    [SerializeField] Text TextVelocity;
+   
     //La variable myMesh de la clase MeshRenderer se crea para enlazar el renderizado de la nave y poder desactivarlo al chocar con un prefab
     [SerializeField] MeshRenderer myMesh;
 
@@ -31,17 +34,16 @@ public class SpaceshipMove : MonoBehaviour
     {
         //Llamo a la corrutina que hace aumentar la velocidad
         StartCoroutine("Distancia");
-       
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Ejecutamos la función propia que permite mover la nave con el joystick
-        MoverNave();
-
+        //Ejecutamos la función propia que permite mover la nave con el joystick sólo si el juego no se ha terminado
+        if(gameOver == false)
+        {
+            MoverNave();
+        }
     }
 
     //Corrutina que hace cambiar el texto de distancia
@@ -56,21 +58,22 @@ public class SpaceshipMove : MonoBehaviour
             //Y la distancia se queda en el ultimo valor antes de chocar
             if(speed != 0)
             {
-                distance = n * speed;
+                distance = n * speed;   
             }
 
             //Cambio el texto que aparece en pantalla
             TextDistance.text = "DISTANCIA: " + distance;
+            TextVelocity.text = "VELOCIDAD: " + speed;
 
-            //Si la nave ha recorrido 300 unidades de distancia la velocidad aumenta a 5f
-            if (distance >= 300f && distance <= 800f)
+            //Si la nave ha recorrido 300 unidades de distancia la velocidad aumenta progresivmente hasta 5f
+            if (distance >= 300f && distance <= 800f && speed < 5f)
             {
-                speed = 5f;
+                speed = speed + 0.1f;
             }
-            //Si la nave ha recorrido 800 unidades de distancia la velocidad aumenta a 7f
-            else if (distance > 800f)
+            //Si la nave ha recorrido 800 unidades de distancia la velocidad progresivmente hasta 7f, que es el limite del juego
+            else if (distance > 800f && speed < 7f)
             {
-                speed = 7f;
+                speed = speed + 0.1f;
             }
             
             //Ejecuto cada ciclo esperando 1 segundo
@@ -108,13 +111,22 @@ public class SpaceshipMove : MonoBehaviour
         //Lo multiplicamos por deltaTime, el eje y la velocidad de movimiento la nave
         transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * desplX);
         transform.Translate(Vector3.up * Time.deltaTime * moveSpeed * desplY);
+
+
     }
 
+    // Metodo que se ejecuta automaticamente en caso de una colision 
     void OnCollisionEnter(Collision collision)
     {
+        // Se actualiza la variable que guarda si la partida o no se ha terminado
+        gameOver = true;
+
+        // La velocidad del juego se vuelve a 0 y se para la corrutina donde se aumenta la velocidad para evitar errores
         speed = 0f;
-        
+        StopCoroutine("Distancia");
+
+        // Desaparece el renderizado 3D de la nave para dar la ilusion de que ha desaparecido el objeto
         myMesh.enabled = false;
-        
+
     }
 }
