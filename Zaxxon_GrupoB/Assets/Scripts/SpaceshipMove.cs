@@ -109,8 +109,13 @@ public class SpaceshipMove : MonoBehaviour
 
         //Movemos la nave mediante el método transform.translate
         //Lo multiplicamos por deltaTime, el eje y la velocidad de movimiento la nave
-        transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * desplX);
-        transform.Translate(Vector3.up * Time.deltaTime * moveSpeed * desplY);
+        //Space.World se utiliza para que el movimiento sea relativo a los ejes del mundo y la rotación de la nave no afecte a su movimiento horizontal y vertical.
+        transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * desplX, Space.World);
+        transform.Translate(Vector3.up * Time.deltaTime * moveSpeed * desplY, Space.World);
+
+        //Con transform.rotation hacemos que la rotación en Z de la nave dependa directamente del desplX (movimiento horizontal), es decir, que cuando no se pulsa ninguna tecla la nave está en horizontal.
+        //Al pulsar la tecla derecha la nave se inclina hacia la derecha y lo mismo sucede con la tecla izquierda. 50 es el ángulo máximo de inclinación de la nave.
+        transform.rotation = Quaternion.Euler(0, 0, desplX * -50);
 
 
     }
