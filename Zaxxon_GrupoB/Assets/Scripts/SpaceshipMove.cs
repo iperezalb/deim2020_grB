@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; //Importante importar esta librería para usar la UI
+using UnityEngine.SceneManagement;
 
 public class SpaceshipMove : MonoBehaviour
 {
@@ -132,6 +133,8 @@ public class SpaceshipMove : MonoBehaviour
 
         // Desaparece el renderizado 3D de la nave para dar la ilusion de que ha desaparecido el objeto
         myMesh.enabled = false;
+
+        SceneManager.LoadScene(2);
 
     }
 }
