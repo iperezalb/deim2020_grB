@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 206371249}
   - component: {fileID: 206371248}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Fondo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -384,14 +384,14 @@ RectTransform:
   m_GameObject: {fileID: 206371246}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.86263, z: 1}
   m_Children: []
   m_Father: {fileID: 1832244725}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000014477, y: 39.282}
+  m_AnchoredPosition: {x: 0.000014477, y: 2}
   m_SizeDelta: {x: 800, y: 528.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &206371248
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 616437545}
   - component: {fileID: 616437544}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Zaxxon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9702166, g: 0.9811321, b: 0.43040225, a: 1}
+  m_Color: {r: 1, g: 0.75686276, b: 0.12941177, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1121,7 +1121,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2049357308}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 324529134}
+        m_MethodName: BotonHighScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2049357308
 MonoBehaviour:
   m_ObjectHideFlags: 0

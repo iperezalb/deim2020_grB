@@ -16,6 +16,14 @@ public class CtrlBotones : MonoBehaviour
         //Application.Quit();
         UnityEditor.EditorApplication.isPlaying = false;
     }
-   
+  
+    public void BotonHighScore()
+    {
+        SceneManager.LoadScene(3);
+    }
+    public void BotonBack()
+    {
+        SceneManager.LoadScene(0);
+    }
 
 }
