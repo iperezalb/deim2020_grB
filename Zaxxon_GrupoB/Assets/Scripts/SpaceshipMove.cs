@@ -66,13 +66,13 @@ public class SpaceshipMove : MonoBehaviour
             TextDistance.text = "DISTANCIA: " + distance;
             TextVelocity.text = "VELOCIDAD: " + speed;
 
-            //Si la nave ha recorrido 200 unidades de distancia la velocidad aumenta progresivmente hasta 8f
-            if (distance >= 200f && distance <= 500f && speed < 8f)
+            //Si la nave ha recorrido 200 unidades de distancia la velocidad aumenta progresivmente hasta 10f
+            if (distance >= 200f && distance <= 500f && speed < 10f)
             {
                 speed = speed + 0.1f;
             }
-            //Si la nave ha recorrido 500 unidades de distancia la velocidad progresivmente hasta 12f, que es el limite del juego
-            else if (distance > 500f && speed < 12f)
+            //Si la nave ha recorrido 500 unidades de distancia la velocidad progresivmente hasta 15f, que es el limite del juego
+            else if (distance > 500f && speed < 15f)
             {
                 speed = speed + 0.1f;
             }
