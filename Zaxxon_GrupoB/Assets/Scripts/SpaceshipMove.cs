@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI; //Importante importar esta librería para usar la UI
 using UnityEngine.SceneManagement;
 
+
 public class SpaceshipMove : MonoBehaviour
 {
     //--SCRIPT PARA MOVER LA NAVE --//
@@ -28,6 +29,10 @@ public class SpaceshipMove : MonoBehaviour
    
     //La variable myMesh de la clase MeshRenderer se crea para enlazar el renderizado de la nave y poder desactivarlo al chocar con un prefab
     [SerializeField] MeshRenderer myMesh;
+
+    // Variables para recrear explosion
+    GameObject MakedObject;
+    public GameObject AllEffect;
 
 
     // Start is called before the first frame update
@@ -134,7 +139,22 @@ public class SpaceshipMove : MonoBehaviour
         // Desaparece el renderizado 3D de la nave para dar la ilusion de que ha desaparecido el objeto
         myMesh.enabled = false;
 
-        SceneManager.LoadScene(2);
+        //SceneManager.LoadScene(2);
 
+        //Aparece una explosion
+        MakedObject = Instantiate(AllEffect, transform.position, transform.rotation) as GameObject;
+
+        // Se inicia una corrutina que espera X segundos antes de la pantalla de GameOver
+
+        StartCoroutine("WaitAndGameOver");
+
+    }
+
+    // Creacion de corrutina para esperar a la animacion de la explosion y despues hacer game over
+    IEnumerator WaitAndGameOver()
+    {
+        yield return new WaitForSeconds(2f);
+
+        SceneManager.LoadScene(2);
     }
 }

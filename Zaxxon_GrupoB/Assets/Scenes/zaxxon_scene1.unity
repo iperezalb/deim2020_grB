@@ -544,6 +544,7 @@ MonoBehaviour:
   TextDistance: {fileID: 585907812}
   TextVelocity: {fileID: 343745212}
   myMesh: {fileID: 989799496}
+  AllEffect: {fileID: 100004, guid: 6e8c7c425e5bc374daf95a774767b1e3, type: 3}
 --- !u!23 &989799496 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 23790945166012462, guid: dae7a3955bbf76e409d09988296acacb,
