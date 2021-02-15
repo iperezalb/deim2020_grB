@@ -38,6 +38,7 @@ public class SpaceshipMove : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] AudioClip VueloNave;
     [SerializeField] AudioClip ExplosionSound;
+    [SerializeField] AudioClip AmbientGameSound;
 
 
     // Start is called before the first frame update
@@ -50,7 +51,10 @@ public class SpaceshipMove : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         //Ejecutamos el sonido del vuelo de la nave
-        audioSource.PlayOneShot(VueloNave, 1f);
+        audioSource.PlayOneShot(VueloNave, 2.5f);
+
+        //Ejecutamos el sonido de ambiente del juego
+        audioSource.PlayOneShot(AmbientGameSound, 1f);
 
     }
 

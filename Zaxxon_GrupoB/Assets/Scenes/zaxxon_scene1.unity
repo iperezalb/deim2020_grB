@@ -547,6 +547,7 @@ MonoBehaviour:
   AllEffect: {fileID: 100004, guid: 6e8c7c425e5bc374daf95a774767b1e3, type: 3}
   VueloNave: {fileID: 8300000, guid: a290fe9640f434e41b2c676d5eb0bdf8, type: 3}
   ExplosionSound: {fileID: 8300000, guid: 8f0637183efbf1f4bb2e32233823e719, type: 3}
+  AmbientGameSound: {fileID: 8300000, guid: 0c756bb1f9291004fb3303ebaf93a846, type: 3}
 --- !u!23 &989799496 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 23790945166012462, guid: dae7a3955bbf76e409d09988296acacb,
@@ -585,11 +586,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a290fe9640f434e41b2c676d5eb0bdf8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 408d40711eb3d744d8132cdcd0ffb196, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
