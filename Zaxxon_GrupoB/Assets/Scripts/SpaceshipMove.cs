@@ -5,6 +5,7 @@ using UnityEngine.UI; //Importante importar esta librería para usar la UI
 using UnityEngine.SceneManagement;
 
 
+
 public class SpaceshipMove : MonoBehaviour
 {
     //--SCRIPT PARA MOVER LA NAVE --//
@@ -34,12 +35,23 @@ public class SpaceshipMove : MonoBehaviour
     GameObject MakedObject;
     public GameObject AllEffect;
 
+    AudioSource audioSource;
+    [SerializeField] AudioClip VueloNave;
+    [SerializeField] AudioClip ExplosionSound;
+
 
     // Start is called before the first frame update
     void Start()
     {
         //Llamo a la corrutina que hace aumentar la velocidad
         StartCoroutine("Distancia");
+
+        //Obtenemos el componente AudioSource
+        audioSource = GetComponent<AudioSource>();
+
+        //Ejecutamos el sonido del vuelo de la nave
+        audioSource.PlayOneShot(VueloNave, 1f);
+
     }
 
     // Update is called once per frame
@@ -143,6 +155,12 @@ public class SpaceshipMove : MonoBehaviour
 
         //Aparece una explosion
         MakedObject = Instantiate(AllEffect, transform.position, transform.rotation) as GameObject;
+        
+        //Se eliminan todos los sonidos asociados al componente AudioSource() de la nave, como el ruido de los motores
+        audioSource.Stop();
+
+        //Ejecutamos el sonido del vuelo de la nave
+        audioSource.PlayOneShot(ExplosionSound, 1f);
 
         // Se inicia una corrutina que espera X segundos antes de la pantalla de GameOver
 
