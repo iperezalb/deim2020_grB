@@ -51,10 +51,10 @@ public class SpaceshipMove : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         //Ejecutamos el sonido del vuelo de la nave
-        audioSource.PlayOneShot(VueloNave, 2.5f);
+        audioSource.PlayOneShot(VueloNave, 3f);
 
         //Ejecutamos el sonido de ambiente del juego
-        audioSource.PlayOneShot(AmbientGameSound, 1f);
+        audioSource.PlayOneShot(AmbientGameSound, 0.5f);
 
     }
 
