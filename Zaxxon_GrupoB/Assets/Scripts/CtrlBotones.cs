@@ -14,7 +14,7 @@ public class CtrlBotones : MonoBehaviour
     {
         //Este código se usa para salir del juego cuando este está ya en funcionamiento.
         
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
 
         Application.Quit();
     }

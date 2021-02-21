@@ -5,8 +5,8 @@ using UnityEngine;
 public class CamaraLook : MonoBehaviour
 {
     [SerializeField] Transform Tarjet;
-    //Variables necesarias para la opción de suavizado
-    [SerializeField] float smoothVelocity = 0.3F;
+    // Variables necesarias para la opción de suavizado
+    // [SerializeField] float smoothVelocity = 0.3F;
     private Vector3 camaraVelocity = Vector3.zero;
 
 
